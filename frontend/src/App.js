@@ -1,9 +1,9 @@
-import './App.css';
+import Navbar from './components/Navbar.js';
 
 function App() {
   return (
     <div className="App">
-      <h1>EL PIZZA</h1>
+      <Navbar/>
     </div>
   );
 }
