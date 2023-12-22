@@ -6,10 +6,19 @@ const app = express();
 
 app.use(express.json());
 connection();
+
+
+const pizzasRoute = require("./routes/pizzasRoute");
+app.use("/api/pizzas/", pizzasRoute);
+
+
 app.get("/", (req, res) => {
   res.send("Server is Working ........" + port);
 });
 
+
+
+/*
 app.get("/getpizzas", async (req, res) => {
   try {
     const pizzas = await Pizza.find({});
@@ -20,7 +29,7 @@ app.get("/getpizzas", async (req, res) => {
   }
 });
 
-
+*/
 const port = process.env.PORT || 9817;
 
 app.listen(port, () => {
