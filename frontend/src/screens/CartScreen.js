@@ -1,12 +1,14 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {addToCart} from '../actions/cardActions'
+
 import { useDispatch, useSelector } from "react-redux";
 
 const CartScreen = () => {
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
+  const dispatch=useDispatch()
   return (
     <div>
       <div className="row " style={{ justifyContent: "center" }}>
@@ -15,7 +17,7 @@ const CartScreen = () => {
           {cartItems.map((item) => {
             return (
               <div className="flex-container">
-                <div className="text-left">
+                <div className="text-left m-1 w-100">
                   <h3>
                     {item.name} [{item.varient}]
                   </h3>
@@ -24,13 +26,39 @@ const CartScreen = () => {
                     {item.price}
                   </h4>
                   <h4>
-                    Quantity <FontAwesomeIcon icon={faPlus} />
+                    Quantity
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      className="faplus"
+                      onClick={() => {
+                        dispatch(
+                          addToCart(item, item.quantity + 1, item.varient)
+                        );
+                      }}
+                    />
                     <b>{item.quantity}</b>
-                    <FontAwesomeIcon icon={faMinus} />
+                    <FontAwesomeIcon
+                      icon={faMinus}
+                      className="faminus"
+                      onClick={() => {
+                        dispatch(
+                          addToCart(item, item.quantity - 1, item.varient)
+                        );
+                      }}
+                    />
                   </h4>
+                  <hr />
                 </div>
-                <div></div>
-                <div></div>
+                <div className="m-1 w-100">
+                  <img
+                    src={item.image}
+                    alt="pizza"
+                    style={{ height: "80px", width: "80px" }}
+                  />
+                </div>
+                <div className="m-1 w-100">
+                  <FontAwesomeIcon icon={faTrash} className="fatrash" />
+                </div>
               </div>
             );
           })}
