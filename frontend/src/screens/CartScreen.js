@@ -1,14 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import {addToCart} from '../actions/cardActions'
+import { addToCart,deleteFromCart } from "../actions/cardActions";
 
 import { useDispatch, useSelector } from "react-redux";
 
 const CartScreen = () => {
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div className="row " style={{ justifyContent: "center" }}>
@@ -57,7 +58,11 @@ const CartScreen = () => {
                   />
                 </div>
                 <div className="m-1 w-100">
-                  <FontAwesomeIcon icon={faTrash} className="fatrash" />
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    className="fatrash"
+                    onClick={() => dispatch(deleteFromCart(item))}
+                  />
                 </div>
               </div>
             );
