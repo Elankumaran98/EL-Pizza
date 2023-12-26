@@ -1,13 +1,14 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { addToCart,deleteFromCart } from "../actions/cardActions";
+import { addToCart, deleteFromCart } from "../actions/cardActions";
 
 import { useDispatch, useSelector } from "react-redux";
 
 const CartScreen = () => {
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
+  var subTotal = cartItems.reduce((x, item) => x + item.price, 0);
   const dispatch = useDispatch();
 
   return (
@@ -68,7 +69,10 @@ const CartScreen = () => {
             );
           })}
         </div>
-        <div className="col-md-4"></div>
+        <div className="col-md-4 " style={{textAlign:"right"}}>
+          <h2 style={{ fontWeight: "bold" }}>SubTotal = {subTotal}/ </h2>
+          <button className="btn">PAY NOW</button>
+        </div>
       </div>
     </div>
   );

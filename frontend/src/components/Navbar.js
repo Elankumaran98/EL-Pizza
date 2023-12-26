@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
 const Navbar = () => {
   const cardState = useSelector((state) => state.cartReducer);
@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/">
+              <Link className="nav-link" aria-current="page" to="/login">
                 Login
               </Link>
             </li>
