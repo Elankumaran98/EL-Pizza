@@ -9,7 +9,10 @@ connection();
 
 
 const pizzasRoute = require("./routes/pizzasRoute");
+const userRoute = require("./routes/userRoute")
+
 app.use("/api/pizzas/", pizzasRoute);
+app.use("/api/users/",userRoute)
 
 
 app.get("/", (req, res) => {
@@ -30,7 +33,7 @@ app.get("/getpizzas", async (req, res) => {
 });
 
 */
-const port = process.env.PORT || 9817;
+const port = process.env.PORT || 9815;
 
 app.listen(port, () => {
   "Server is Working ........ " + port;

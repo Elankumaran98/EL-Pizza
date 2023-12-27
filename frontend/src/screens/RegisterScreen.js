@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {registerUser} from '../actions/userActions'
+
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
+  const dispatch=useDispatch()
 
     
     const register = () => {
@@ -15,7 +19,8 @@ const RegisterScreen = () => {
             const user = {
                 name,email,password
             }
-            console.log(user)
+          console.log(user)
+          dispatch(registerUser(user))
         }
     }
   return (
