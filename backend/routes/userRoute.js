@@ -8,10 +8,26 @@ router.post("/register", async (req, res) => {
   const newUser = new User({ name, email, password });
 
   try {
-    newUser.save();
+    await newUser.save(); // Use await for promise-based save
     res.send("User Registered Successfully");
   } catch (error) {
-    return res.status(400).json({ message: error });
+    res.status(400).json({ message: error.message }); // Send specific error message
+  }
+});
+
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user || !user.comparePassword(password)) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    res.json({ user }); // Send user data upon successful login
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 

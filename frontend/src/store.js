@@ -4,21 +4,28 @@ import { thunk } from "redux-thunk";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { getAllPizzasReducer } from "./reducers/pizzaReducers";
 import { cartReducer } from "./reducers/cardReducers";
-import { registerUserReducer } from "./reducers/userReducers";
+import { registerUserReducer, loginUserReducer } from "./reducers/userReducers";
 
 const finalReducer = combineReducers({
   getAllPizzasReducer: getAllPizzasReducer,
   cartReducer: cartReducer,
-  registerUserReducer
+  registerUserReducer: registerUserReducer,
+  loginUserReducer: loginUserReducer,
 });
 
 const cartItems = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
+
 const initialState = {
   cartReducer: {
     cartItems: cartItems,
+  },
+  loginUserReducer: {
+    currentUser: localStorage.getItem("currentUser")
+      ? JSON.parse(localStorage.getItem("currentUser"))
+      : null,
   },
 };
 

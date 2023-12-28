@@ -1,11 +1,13 @@
 const express = require("express");
 require("dotenv").config();
 const connection = require("./db");
-const Pizza = require("./models/pizzaModel");
+const bodyParser = require("body-parser");
 const app = express();
 
 app.use(express.json());
 connection();
+app.use(bodyParser.urlencoded({ extended: false })); // For URL-encoded data
+app.use(bodyParser.json()); 
 
 
 const pizzasRoute = require("./routes/pizzasRoute");
@@ -20,19 +22,6 @@ app.get("/", (req, res) => {
 });
 
 
-
-/*
-app.get("/getpizzas", async (req, res) => {
-  try {
-    const pizzas = await Pizza.find({});
-    res.json(pizzas); 
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error retrieving pizzas"); 
-  }
-});
-
-*/
 const port = process.env.PORT || 9815;
 
 app.listen(port, () => {
