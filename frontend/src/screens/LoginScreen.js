@@ -1,18 +1,22 @@
-import React, { useState ,useEffect} from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../actions/userActions";
+import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const loginstate = useSelector((state) => state.loginUserReducer);
+  const {loading,error}=loginstate
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.getItem('currentUser')) {
-      window.location.replace("/")
+    if (localStorage.getItem("currentUser")) {
+      window.location.replace("/");
     }
-  }, [])
-  
+  }, []);
 
   const handleLogin = () => {
     const user = { email, password };
@@ -21,9 +25,15 @@ const LoginScreen = () => {
 
   return (
     <div>
-      <div className="row mt-5" style={{ justifyContent: "center" }}>
-        <div className="col-md-5 mt-5" style={{ textAlign: "left" }}>
-          <h1 className="m-2" style={{ textAlign: "center" }}>
+      <div className="row mt-5 " style={{ justifyContent: "center" }}>
+        <div
+          className="col-md-5 mt-5 shadow p-3 mb-5 bg-body-tertiary rounded"
+          style={{ textAlign: "left" }}>
+          {loading && <Loading />}
+          {error && <Error error="Invalid Credentials"/>}
+          <h1
+            className="m-2 shadow p-3 mb-5 bg-body-tertiary rounded"
+            style={{ textAlign: "center" }}>
             Login
           </h1>
           <div>
@@ -43,9 +53,13 @@ const LoginScreen = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="btn mt-3" onClick={handleLogin}>
+            <button className="btn mt-3 mb-3" onClick={handleLogin}>
               LOGIN
             </button>
+            <br />
+            <Link className="nav-link" to="/register">
+              Click Here To REGISTER
+            </Link>
           </div>
         </div>
       </div>
