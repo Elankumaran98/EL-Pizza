@@ -4,6 +4,7 @@ import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { addToCart, deleteFromCart } from "../actions/cardActions";
 
 import { useDispatch, useSelector } from "react-redux";
+import CheckOut from "../components/CheckOut";
 
 const CartScreen = () => {
   const cartstate = useSelector((state) => state.cartReducer);
@@ -69,9 +70,9 @@ const CartScreen = () => {
             );
           })}
         </div>
-        <div className="col-md-4 " style={{textAlign:"right"}}>
+        <div className="col-md-4 " style={{ textAlign: "right" }}>
           <h2 style={{ fontWeight: "bold" }}>SubTotal = {subTotal}/ </h2>
-          <button className="btn">PAY NOW</button>
+          <CheckOut subTotal={ subTotal} />
         </div>
       </div>
     </div>
