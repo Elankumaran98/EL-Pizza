@@ -6,12 +6,12 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const cardState = useSelector((state) => state.cartReducer);
   const userState = useSelector((state) => state.loginUserReducer);
-  const {currentUser} = userState;
+  const { currentUser } = userState;
   return (
     <nav className="navbar navbar-expand-lg shadow p-3 mb-5 bg-body-tertiary rounded">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          EL PIZZA 
+          EL PIZZA
         </Link>
         <button
           className="navbar-toggler"
@@ -26,7 +26,25 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             {currentUser ? (
-              <li className="nav-item">{ currentUser.user.name}</li>
+              <div className="dropdown ">
+                <Link
+                  className=" dropdown-toggle nav-link"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  {currentUser.user.name}
+                </Link>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuLink">
+                  <Link className="dropdown-item" to="/">
+                    Orders
+                  </Link>
+                  <Link className="dropdown-item" to="/">
+                    LogOut
+                  </Link>
+                </div>
+              </div>
             ) : (
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/login">
