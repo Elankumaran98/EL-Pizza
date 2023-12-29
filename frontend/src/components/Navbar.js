@@ -1,9 +1,11 @@
 import React from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../actions/userActions";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const cardState = useSelector((state) => state.cartReducer);
   const userState = useSelector((state) => state.loginUserReducer);
   const { currentUser } = userState;
@@ -40,8 +42,13 @@ const Navbar = () => {
                   <Link className="dropdown-item" to="/">
                     Orders
                   </Link>
-                  <Link className="dropdown-item" to="/">
-                    LogOut
+                  <Link
+                    className="dropdown-item"
+                    to="/login"
+                    onClick={() => {
+                      dispatch(logoutUser());
+                    }}>
+                    <li>LogOut</li>
                   </Link>
                 </div>
               </div>
