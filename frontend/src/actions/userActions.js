@@ -27,8 +27,10 @@ export const loginUser = (user) => async (dispatch) => {
     console.log(response);
     dispatch({
       type: "USER_LOGIN_SUCCESS",
-      payload: response.data, // Update payload with user data from response
+      payload: response.data,
     });
+    localStorage.setItem("currentUser", JSON.stringify(response.data));
+    window.location.replace('/')
   } catch (error) {
     dispatch({
       type: "USER_LOGIN_FAILED",

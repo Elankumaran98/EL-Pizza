@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../actions/userActions";
 
@@ -6,6 +6,13 @@ const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem('currentUser')) {
+      window.location.replace("/")
+    }
+  }, [])
+  
 
   const handleLogin = () => {
     const user = { email, password };

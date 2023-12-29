@@ -8,10 +8,10 @@ router.post("/register", async (req, res) => {
   const newUser = new User({ name, email, password });
 
   try {
-    await newUser.save(); // Use await for promise-based save
+    await newUser.save(); 
     res.send("User Registered Successfully");
   } catch (error) {
-    res.status(400).json({ message: error.message }); // Send specific error message
+    res.status(400).json({ message: error.message }); 
   }
 });
 
@@ -21,11 +21,21 @@ router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
+    if (user.length>0) {
+      const currentUser = {
+        name: user[0].name,
+        email: user[0].email,
+        isAdmin: user[0].isAdmin,
+        _id: user[0]._id
+      }
+      res.send(currentUser)
+    }
+
     if (!user || !user.comparePassword(password)) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    res.json({ user }); // Send user data upon successful login
+    res.json({ user }); 
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

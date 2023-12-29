@@ -25,7 +25,7 @@ export const loginUserReducer = (
     loading: false,
     success: false,
     error: null,
-    currentUser: null, // Store logged-in user data
+    currentUser: null, 
   },
   action
 ) => {
@@ -43,7 +43,7 @@ export const loginUserReducer = (
         loading: false,
         success: true,
         error: null,
-        currentUser: action.payload, // Update currentUser on success
+        currentUser: action.payload, 
       };
     case "USER_LOGIN_FAILED":
       return {
