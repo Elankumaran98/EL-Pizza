@@ -13,7 +13,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     dispatch(getAllPizzas());
-  });
+  },[]);
   return (
     <div className="row justify-content-center">
       {loading ? (

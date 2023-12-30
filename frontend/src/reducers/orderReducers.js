@@ -8,7 +8,6 @@ export const placeOrderReducer = (state = {}, action) => {
       return {
         loading: false,
         success: true,
-        currentUser: action.payload,
       };
     case "PLACE_ORDER_FAILED":
       return {
