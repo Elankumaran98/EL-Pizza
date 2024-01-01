@@ -10,7 +10,7 @@ export const placeOrder = (token, subTotal) => async (dispatch, getState) => {
     const response = await axios.post("/api/orders/placeorder", {
       token,
       subTotal,
-      currentUser,
+      currentUser:currentUser,
       cartItems,
     });
     dispatch({ type: "PLACE_ORDER_SUCCESS" });
