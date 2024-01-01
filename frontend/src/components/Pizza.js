@@ -20,7 +20,7 @@ const Pizza = ({ pizza }) => {
     <div
       style={{ padding: "70px ", textAlign: "center" }}
       className="shadow p-3 mb-5 bg-body-tertiary rounded">
-      <div onClick={handleShow}>
+      <div onClick={handleShow} >
         <h1>{pizza.name}</h1>
         <img
           src={pizza.image}

@@ -39,7 +39,7 @@ const Navbar = () => {
                 <div
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuLink">
-                  <Link className="dropdown-item" to="/">
+                  <Link className="dropdown-item" to="/orders">
                     Orders
                   </Link>
                   <Link
