@@ -5,6 +5,7 @@ import { BrowserRouter,Routes, Route } from "react-router-dom";
 import RegisterScreen from "./screens/RegisterScreen.js";
 import LoginScreen from "./screens/LoginScreen.js";
 import OrdersScreen from "./screens/OrdersScreen.js";
+import AdminScreen from "./screens/AdminScreen.js";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Route path="/cart" element={<CartScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
           <Route path="/login" element={<LoginScreen />} />
-          <Route path="/orders" element={ <OrdersScreen/>} />
+          <Route path="/orders" element={<OrdersScreen />} />
+          <Route path="/admin/*" element={ <AdminScreen/>} />
         </Routes>
       </BrowserRouter>
     </div>

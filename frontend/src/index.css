@@ -57,3 +57,21 @@ input{
   margin-top: 10px !important;
   box-shadow: none !important;
 }
+
+.adminfunction{
+  padding: 10px;
+  background-color: rgb(141, 196, 159);
+  text-align: center !important;
+}
+
+.adminfunction li{
+  list-style: none !important;
+  display: inline !important;
+}
+.admin{
+  padding: 20px;
+  text-decoration: none !important;
+}
+td,th,tr{
+  text-align: left !important;
+}
