@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import Pizza from "../components/Pizza";
+import { Link } from "react-router-dom";
 import { getAllPizzas } from "../actions/pizzaActions";
-import {  faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 
 const PizzasList = () => {
   const dispatch = useDispatch();
@@ -49,11 +48,13 @@ const PizzasList = () => {
                       className="m-2 mt-4"
                       style={{ color: "red" }}
                     />
-                    <FontAwesomeIcon
-                      icon={faEdit}
-                      className="m-2 mt-4"
-                      style={{ color: "green" }}
-                    />
+                    <Link to={`/admin/editpizza/${pizza._id}`}>
+                      <FontAwesomeIcon
+                        icon={faEdit}
+                        className="m-2 mt-4"
+                        style={{ color: "green" }}
+                      />
+                    </Link>
                   </td>
                 </tr>
               );

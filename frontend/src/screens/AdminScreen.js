@@ -5,6 +5,7 @@ import UsersList from "./UsersList";
 import PizzasList from "./PizzasList";
 import AddNewPizza from "./AddNewPizza";
 import OrdersList from "./OrdersList";
+import EditScreen from "./EditScreen"
 
 const AdminScreen = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const AdminScreen = () => {
             <Route path="pizzaslist" element={<PizzasList />} />
             <Route path="addnewpizza" element={<AddNewPizza />} />
             <Route path="orderslist" element={<OrdersList />} />
+            <Route path="editpizza/:pizzaid" element={ <EditScreen/>} />
           </Routes>
         </div>
       </div>
