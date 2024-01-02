@@ -40,9 +40,6 @@ router.post("/getpizzabyid", async (req, res) => {
   }
 });
 
-
-
-
 router.post("/editpizza", async (req, res) => {
   const editedpizza = req.body.editedpizza;
 
@@ -55,6 +52,16 @@ router.post("/editpizza", async (req, res) => {
       (pizza.prices = [editedpizza.prices]);
     await pizza.save();
     res.send("Pizza Updated Successfully");
+  } catch (error) {
+    return res.status(400).json({ message: "Something went wrong" + error });
+  }
+});
+
+router.post("/deletepizza", async (req, res) => {
+  const pizzaid = req.body.pizzaid;
+  try {
+    await Pizza.findOneAndDelete({ _id: pizzaid });
+    res.send("Pizzaid deleted successfully");
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong" + error });
   }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { Link } from "react-router-dom";
-import { getAllPizzas } from "../actions/pizzaActions";
+import { deletePizza, getAllPizzas } from "../actions/pizzaActions";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -46,6 +46,9 @@ const PizzasList = () => {
                     <FontAwesomeIcon
                       icon={faTrash}
                       className="m-2 mt-4"
+                      onClick={() => {
+                        dispatch(deletePizza(pizza._id));
+                      }}
                       style={{ color: "red" }}
                     />
                     <Link to={`/admin/editpizza/${pizza._id}`}>
