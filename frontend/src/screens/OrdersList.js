@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deliverOrder, getUserOrders } from "../actions/orderActions";
+import { deliverOrder, getAllOrders } from "../actions/orderActions";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 
 const OrdersList = () => {
   const dispatch = useDispatch();
-  const orderstate = useSelector((state) => state.getUserOrdersReducer);
-  const { loading, error, orders } = orderstate;
+  const getordersstate = useSelector((state) => state.getAllOrdersReducer);
+  const { loading, error, orders } = getordersstate;
 
   useEffect(() => {
-    dispatch(getUserOrders());
+    dispatch(getAllOrders());
   }, []);
   return (
     <div>
@@ -40,7 +40,7 @@ const OrdersList = () => {
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>
                     {order.isDelivered ? (
-                      <h4>Delivered</h4>
+                      <h4 style={{ color: "green" }}>Delivered</h4>
                     ) : (
                       <button
                         className="btn"
