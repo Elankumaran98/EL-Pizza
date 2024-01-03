@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, Routes, Route } from "react-router-dom";
 import UsersList from "./UsersList";
 import PizzasList from "./PizzasList";
@@ -8,7 +8,6 @@ import OrdersList from "./OrdersList";
 import EditScreen from "./EditScreen"
 
 const AdminScreen = () => {
-  const dispatch = useDispatch();
   const userState = useSelector((state) => state.loginUserReducer);
   const { currentUser } = userState;
 
