@@ -84,3 +84,23 @@ input{
 td,th,tr{
   text-align: left !important;
 }
+
+
+.footer {
+  color: white !important;
+  background-color: black !important;
+  box-shadow: 0 8px 6px -6px rgb(155, 91, 91) !important;
+  padding: 1rem;
+}
+
+.flink {
+  text-decoration: none;
+  color: white;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.flink:hover {
+  color: aquamarine;
+  border-bottom: 1px solid rgb(185, 214, 17) !important;
+}

@@ -12,7 +12,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/cart" element={<CartScreen />} />
