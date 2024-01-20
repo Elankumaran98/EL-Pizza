@@ -1,13 +1,26 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/userModel");
+const multer = require("multer");
+const storage = multer.memoryStorage(); 
+const upload = multer({ storage });
 
-router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
-
-  const newUser = new User({ name, email, password });
-
+router.post("/register", upload.single("photo"), async (req, res) => {
   try {
+    const { name, email, password } = req.body;
+    const photo = req.file; 
+
+    if (!photo) {
+      return res.status(400).json({ message: "Photo is required" });
+    }
+
+    const newUser = new User({
+      name,
+      email,
+      password,
+      photo: photo.buffer.toString("base64"), 
+    });
+
     await newUser.save();
     res.send("User Registered Successfully");
   } catch (error) {

@@ -10,10 +10,10 @@ const userSchema = new mongoose.Schema(
     email: {
       type: "string",
       required: true,
-      unique: true, 
+      unique: true,
       validate: {
         validator: (value) => {
-          return true; 
+          return true;
         },
         message: "Invalid email format",
       },
@@ -21,7 +21,11 @@ const userSchema = new mongoose.Schema(
     password: {
       type: "string",
       required: true,
-      minlength: 8, 
+      minlength: 8,
+    },
+    photo: {
+      type: String,
+      default: "", // Default to an empty string if no photo is provided
     },
     isAdmin: {
       type: "Boolean",

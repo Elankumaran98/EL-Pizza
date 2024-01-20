@@ -43,10 +43,20 @@ const Navbar = () => {
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ marginRight: "5px" }}
-                  />
+                  {currentUser.user.photo && (
+                    <img
+                      className="rounded-circle"
+                      src={`data:image/png;base64,${currentUser.user.photo}`}
+                      alt={currentUser.user.name}
+                      style={{ width: 40, height: 40, marginRight: "5px" }}
+                    />
+                  )}
+                  {!currentUser.user.photo && (
+                    <FontAwesomeIcon
+                      icon={faUser}
+                      style={{ marginRight: "5px" }}
+                    />
+                  )}
                   {currentUser.user.name}
                 </Link>
                 <div

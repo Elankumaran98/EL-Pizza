@@ -1,22 +1,30 @@
 import axios from "axios";
 
 export const registerUser = (user) => async (dispatch) => {
-  dispatch({
-    type: "USER_REGISTER_REQUEST",
-  });
+  dispatch({ type: "USER_REGISTER_REQUEST" });
   try {
-    const response = await axios.post("/api/users/register", user);
-    console.log(response);
-    dispatch({
-      type: "USER_REGISTER_SUCCESS",
+    const formData = new FormData();
+    formData.append("name", user.name);
+    formData.append("email", user.email);
+    formData.append("password", user.password);
+    formData.append("photo", user.photo); // Add the photo to the form data
+
+    const response = await axios.post("/api/users/register", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
     });
+     console.log(response);
+     dispatch({
+       type: "USER_REGISTER_SUCCESS",
+     });
   } catch (error) {
-    dispatch({
-      type: "USER_REGISTER_FAILED",
-      payload: error,
-    });
+   dispatch({
+     type: "USER_REGISTER_FAILED",
+     payload: error,
+   });
   }
 };
+
+
 
 export const loginUser = (user) => async (dispatch) => {
   dispatch({

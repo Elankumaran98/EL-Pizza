@@ -12,6 +12,7 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
+  const [photo, setPhoto] = useState(null);
   const registerstate = useSelector((state) => state.registerUserReducer);
   const { error, loading, success } = registerstate;
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const RegisterScreen = () => {
         name,
         email,
         password,
+        photo
       };
       console.log(user);
       dispatch(registerUser(user));
@@ -77,6 +79,13 @@ const RegisterScreen = () => {
                 value={conformPassword}
                 onChange={(e) => setConformPassword(e.target.value)}
               />
+              <input
+                required
+                type="file"
+                accept="image/*"
+                onChange={(e) => setPhoto(e.target.files[0])}
+              />
+
               <button className="btn mt-3 mb-3" onClick={register}>
                 REGISTER
               </button>
