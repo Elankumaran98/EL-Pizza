@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
     },
     photo: {
       type: String,
-      default: "", // Default to an empty string if no photo is provided
+      default: "", 
     },
     isAdmin: {
       type: "Boolean",

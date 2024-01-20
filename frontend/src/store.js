@@ -13,6 +13,7 @@ import {
   registerUserReducer,
   loginUserReducer,
   getAllUsersReducer,
+  userDetailsReducer,
 } from "./reducers/userReducers";
 import {
   placeOrderReducer,
@@ -32,6 +33,7 @@ const finalReducer = combineReducers({
   EditPizzaReducer: EditPizzaReducer,
   getAllOrdersReducer: getAllOrdersReducer,
   getAllUsersReducer: getAllUsersReducer,
+  userDetailsReducer:userDetailsReducer
 });
 
 const cartItems = localStorage.getItem("cartItems")

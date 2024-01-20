@@ -7,6 +7,7 @@ import LoginScreen from "./screens/LoginScreen.js";
 import OrdersScreen from "./screens/OrdersScreen.js";
 import AdminScreen from "./screens/AdminScreen.js";
 import Contact from "./screens/Contact.js";
+import ProfileScreen from "./screens/ProfileScreen.js";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/orders" element={<OrdersScreen />} />
           <Route path="/admin/*" element={<AdminScreen />} />
-          <Route path="/contact" element={ <Contact/>} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={ <ProfileScreen/>} />
         </Routes>
       </BrowserRouter>
     </div>

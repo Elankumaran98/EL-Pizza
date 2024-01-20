@@ -76,3 +76,21 @@ export const getAllUsersReducer = (state = { users: [] }, action) => {
       return state;
   }
 };
+
+
+export const userDetailsReducer = (state = { loading: false, error: null, user: null }, action) => {
+  switch (action.type) {
+    case "USER_GET_DETAILS_REQUEST":
+      return { ...state, loading: true, error: null };
+    case "USER_GET_DETAILS_SUCCESS":
+      return { ...state, loading: false, error: null, user: action.payload };
+    case "USER_GET_DETAILS_FAILED":
+      return { ...state, loading: false, error: action.payload, user: null };
+    case "USER_UPDATE_SUCCESS":
+      return { ...state, loading: false, error: null, user: action.payload };
+    case "USER_UPDATE_FAILED":
+      return { ...state, loading: false, error: action.payload, user: state.user };
+    default:
+      return state;
+  }
+};

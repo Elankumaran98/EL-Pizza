@@ -88,3 +88,27 @@ export const deleteUser = (userid) => async (dispatch) => {
   }
 };
 
+
+export const updateUserDetails = (userDetails) => async (dispatch) => {
+  try {
+    const response = await axios.put("/api/users/update", userDetails);
+    dispatch({ type: "USER_UPDATE_SUCCESS", payload: response.data });
+  } catch (error) {
+    dispatch({ type: "USER_UPDATE_FAILED", payload: error });
+  }
+};
+
+
+// ... other actions
+
+export const getUserDetails = () => async (dispatch) => {
+  try {
+    dispatch({ type: "USER_GET_DETAILS_REQUEST" });
+    const response = await axios.get("/api/users/details");
+    dispatch({ type: "USER_GET_DETAILS_SUCCESS", payload: response.data });
+  } catch (error) {
+    dispatch({ type: "USER_GET_DETAILS_FAILED", payload: error });
+  }
+};
+
+

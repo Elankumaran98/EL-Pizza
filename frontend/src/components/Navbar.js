@@ -10,6 +10,7 @@ import {
   faSignOut,
   faSortAmountDown,
   faUser,
+  faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -48,7 +49,7 @@ const Navbar = () => {
                       className="rounded-circle"
                       src={`data:image/png;base64,${currentUser.user.photo}`}
                       alt={currentUser.user.name}
-                      style={{ width: 40, height: 40, marginRight: "5px" }}
+                      style={{ width: 30, height: 30, marginRight: "5px" }}
                     />
                   )}
                   {!currentUser.user.photo && (
@@ -62,6 +63,13 @@ const Navbar = () => {
                 <div
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuLink">
+                  <Link className="dropdown-item" to="/profile">
+                    <FontAwesomeIcon
+                      icon={faUserCircle}
+                      style={{ marginRight: "5px" }}
+                    />
+                    Profile
+                  </Link>
                   <Link className="dropdown-item" to="/orders">
                     <FontAwesomeIcon
                       icon={faSortAmountDown}
