@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&family=Sometype+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -18,8 +20,15 @@ h1 {
 }
 
 .navbar-brand {
-  color: black !important;
-  font-size: 32px;
+  font-size: 40px;
+   font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 100,
+    "EHLT" 12;
+
 }
 .nav-link {
   color: black !important;

@@ -4,6 +4,7 @@ const connection = require("./db");
 const bodyParser = require("body-parser");
 const app = express();
 
+
 app.use(express.json());
 connection();
 app.use(bodyParser.urlencoded({ extended: false })); // For URL-encoded data

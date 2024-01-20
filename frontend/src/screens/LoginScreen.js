@@ -4,12 +4,14 @@ import { loginUser } from "../actions/userActions";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignIn, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const loginstate = useSelector((state) => state.loginUserReducer);
-  const {loading,error}=loginstate
+  const { loading, error } = loginstate;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,10 +32,11 @@ const LoginScreen = () => {
           className="col-md-5 mt-5 shadow p-3 mb-5 bg-body-tertiary rounded"
           style={{ textAlign: "left" }}>
           {loading && <Loading />}
-          {error && <Error error="Invalid Credentials"/>}
+          {error && <Error error="Invalid Credentials" />}
           <h1
             className="m-2 shadow p-3 mb-5 bg-body-tertiary rounded"
             style={{ textAlign: "center" }}>
+            <FontAwesomeIcon icon={faSignIn} style={{ marginRight: "5px" }} />
             Login
           </h1>
           <div>
@@ -54,6 +57,7 @@ const LoginScreen = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="btn mt-3 mb-3" onClick={handleLogin}>
+              <FontAwesomeIcon icon={faSignIn} style={{ marginRight: "5px" }} />
               LOGIN
             </button>
             <br />

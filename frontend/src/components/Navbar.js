@@ -3,6 +3,15 @@ import "../index.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../actions/userActions";
+import {
+  faContactBook,
+  faShop,
+  faSignIn,
+  faSignOut,
+  faSortAmountDown,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -34,12 +43,20 @@ const Navbar = () => {
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false">
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ marginRight: "5px" }}
+                  />
                   {currentUser.user.name}
                 </Link>
                 <div
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuLink">
                   <Link className="dropdown-item" to="/orders">
+                    <FontAwesomeIcon
+                      icon={faSortAmountDown}
+                      style={{ marginRight: "5px" }}
+                    />
                     Orders
                   </Link>
                   <Link
@@ -48,13 +65,21 @@ const Navbar = () => {
                     onClick={() => {
                       dispatch(logoutUser());
                     }}>
-                    <li>LogOut</li>
+                    <FontAwesomeIcon
+                      icon={faSignOut}
+                      style={{ marginRight: "5px" }}
+                    />
+                    LogOut
                   </Link>
                 </div>
               </div>
             ) : (
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/login">
+                  <FontAwesomeIcon
+                    icon={faSignIn}
+                    style={{ marginRight: "5px" }}
+                  />
                   Login
                 </Link>
               </li>
@@ -62,11 +87,16 @@ const Navbar = () => {
 
             <li className="nav-item">
               <Link to="/cart" className="nav-link">
+                <FontAwesomeIcon icon={faShop} style={{ marginRight: "5px" }} />
                 Cart {cardState.cartItems.length}
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/contact">
+                <FontAwesomeIcon
+                  icon={faContactBook}
+                  style={{ marginRight: "5px" }}
+                />
                 Contact
               </Link>
             </li>
