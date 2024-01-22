@@ -4,11 +4,9 @@ const connection = require("./db");
 const bodyParser = require("body-parser");
 const app = express();
 
-
-app.use(express.json());
+app.use(bodyParser.json({ limit: '50mb' })); // For JSON data
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' })); // For URL-encoded data
 connection();
-app.use(bodyParser.urlencoded({ extended: false })); // For URL-encoded data
-app.use(bodyParser.json()); 
 
 
 const pizzasRoute = require("./routes/pizzasRoute");

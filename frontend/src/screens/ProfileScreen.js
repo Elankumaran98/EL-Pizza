@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserDetails, updateUserDetails } from "../actions/userActions";
-import { Link } from "react-router-dom";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Layout from '../components/Layout'
 
 const ProfileScreen = () => {
@@ -29,12 +26,15 @@ const ProfileScreen = () => {
   };
 
   return (
-    <Layout>
+    <Layout title={"Profile - EL Pizza App"}>
       <div>
         {!loading && !error && (
           <>
             {editMode ? (
-              <form onSubmit={handleSubmit}>
+              <form
+                className="row mt-5 "
+                style={{ justifyContent: "center" }}
+                onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
                 <input
                   type="text"
