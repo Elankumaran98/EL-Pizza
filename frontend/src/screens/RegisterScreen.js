@@ -36,13 +36,13 @@ const RegisterScreen = () => {
       <div>
         <div className="row mt-5 " style={{ justifyContent: "center" }}>
           <div
-            className="col-md-5 mt-5 shadow p-3 mb-5 bg-body-tertiary rounded"
+            className="col-md-5 mt-5 shadow p-3 mb-5 bg-body-tertiary rounded home"
             style={{ textAlign: "left" }}>
             {loading && <Loading />}
             {success && <Success success="User Registered Successfully" />}
             {error && <Error error="Email Already Registered" />}
             <h1
-              className="m-2 shadow p-3 mb-5 bg-body-tertiary rounded"
+              className="m-2 shadow p-3 mb-5 bg-body-tertiary rounded myhead"
               style={{ textAlign: "center" }}>
               REGISTER
             </h1>

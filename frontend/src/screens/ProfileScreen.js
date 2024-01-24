@@ -55,14 +55,21 @@ const ProfileScreen = () => {
                   }
                   required
                 />
-                <button type="submit">Save Changes</button>
-                <button type="button" onClick={() => setEditMode(false)}>
+                <button className="btn mt-3" type="submit">
+                  Save Changes
+                </button>
+                <button
+                  className="btn mt-3"
+                  type="button"
+                  onClick={() => setEditMode(false)}>
                   Cancel
                 </button>
               </form>
             ) : (
-              <div>
-                <h2>Profile</h2>
+              <div style={{ textAlign: "center" }}>
+                <h2 className="m-2 shadow p-3 mb-5 bg-body-tertiary rounded myhead">
+                  Profile
+                </h2>
                 {currentUser.user.photo && (
                   <img
                     className="rounded-circle"
@@ -75,7 +82,13 @@ const ProfileScreen = () => {
                 <p>Email: {currentUser.user.email}</p>
               </div>
             )}
-            <button onClick={() => setEditMode(true)}>Edit Profile</button>
+            <div style={{ textAlign: "center" }}>
+              <button
+                onClick={() => setEditMode(true)}
+                className="btn mt-3 mb-3">
+                Edit Profile
+              </button>
+            </div>
           </>
         )}
       </div>

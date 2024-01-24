@@ -20,7 +20,7 @@ const Navbar = () => {
   const userState = useSelector((state) => state.loginUserReducer);
   const { currentUser } = userState;
   return (
-    <nav className="navbar navbar-expand-lg shadow p-3 mb-5 bg-body-tertiary rounded">
+    <nav className="navbar navbar-expand-lg shadow p-3 mb-5  rounded ">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           EL PIZZA

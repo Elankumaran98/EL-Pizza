@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&family=Sometype+Mono&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
 
 body {
   margin: 0;
@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Montserrat", sans-serif;
   font-family: "Sometype Mono", monospace;
+  background: linear-gradient(0deg, #93e4a1 0%, #ffb5e0 100%);
 }
 
 code {
@@ -18,17 +19,20 @@ h1 {
   font-size: 20px;
   font-weight: bold;
 }
+.myhead {
+  background: linear-gradient(0deg, #db85bf 0%, #2aca67 100%);
+}
+.navbar {
+  background: linear-gradient(0deg, #93e4a1 0%, #ca2a87 100%);
+}
 
 .navbar-brand {
   font-size: 40px;
-   font-family: "Nabla", system-ui;
+  font-family: "Nabla", system-ui;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "EDPT" 100,
-    "EHLT" 12;
-
+  font-variation-settings: "EDPT" 100, "EHLT" 12;
 }
 .nav-link {
   color: black !important;
@@ -39,10 +43,12 @@ h1 {
 }
 
 .btn {
-  background-color: red !important;
+  background: linear-gradient(0deg, #e657c2 0%, #ca2a3f 100%) !important;
   color: white !important;
 }
-
+.home {
+  background: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+}
 select {
   box-shadow: none !important;
   border-color: black !important;
@@ -58,33 +64,34 @@ select {
   margin: 5px !important;
 }
 
-.fatrash{
+.fatrash {
   color: red !important;
   margin: 5px !important;
 }
-input{
+input {
   margin-top: 10px !important;
   box-shadow: none !important;
 }
 
-.adminfunction{
+.adminfunction {
   padding: 10px;
   background-color: rgb(141, 196, 159);
   text-align: center !important;
 }
 
-.adminfunction li{
+.adminfunction li {
   list-style: none !important;
   display: inline !important;
 }
-.admin{
+.admin {
   padding: 20px;
   text-decoration: none !important;
 }
-td,th,tr{
+td,
+th,
+tr {
   text-align: left !important;
 }
-
 
 .footer {
   color: white !important;
