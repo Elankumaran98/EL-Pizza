@@ -25,6 +25,7 @@ const PizzasList = () => {
         <thead className="table-primary">
           <tr>
             <th>Name</th>
+            <th>Image</th>
             <th>Prices</th>
             <th>Category</th>
             <th>Actions</th>
@@ -36,6 +37,14 @@ const PizzasList = () => {
               return (
                 <tr>
                   <td>{pizza.name}</td>
+                  <td>
+                    <img
+                      src={pizza.image}
+                      alt="pizza"
+                      className="img-fluid"
+                      style={{ height: "200px", width: "200px" }}
+                    />
+                  </td>
                   <td>
                     Small:{pizza.prices[0]["small"]} <br />
                     Medium:{pizza.prices[0]["medium"]} <br />
