@@ -55,6 +55,16 @@ const ProfileScreen = () => {
                   }
                   required
                 />
+                <label htmlFor="phone">Phone:</label>
+                <input
+                  type="text"
+                  id="phone"
+                  value={userDetails.phone}
+                  onChange={(e) =>
+                    setUserDetails({ ...userDetails, phone: e.target.value })
+                  }
+                  required
+                />
                 <button className="btn mt-3" type="submit">
                   Save Changes
                 </button>
@@ -75,11 +85,17 @@ const ProfileScreen = () => {
                     className="rounded-circle"
                     src={`data:image/png;base64,${currentUser.user.photo}`}
                     alt={currentUser.user.name}
-                    style={{ width: 150, height: 150, marginRight: "5px" }}
+                    style={{
+                      width: 150,
+                      height: 150,
+                      marginRight: "5px",
+                      marginBottom: "5px",
+                    }}
                   />
                 )}
                 <p>Name: {currentUser.user.name}</p>
                 <p>Email: {currentUser.user.email}</p>
+                <p>Phone: {currentUser.user.phone}</p>
               </div>
             )}
             <div style={{ textAlign: "center" }}>

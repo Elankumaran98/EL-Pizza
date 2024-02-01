@@ -10,6 +10,7 @@ import Layout from "../components/Layout";
 const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
   const [photo, setPhoto] = useState(null);
@@ -24,6 +25,7 @@ const RegisterScreen = () => {
       const user = {
         name,
         email,
+        phone,
         password,
         photo
       };
@@ -57,12 +59,21 @@ const RegisterScreen = () => {
               />
               <input
                 required
+                type="text"
+                placeholder="Phone Number"
+                className="form-control"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <input
+                required
                 type="email"
                 placeholder="Email"
                 className="form-control"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+
               <input
                 required
                 type="password"
@@ -85,7 +96,7 @@ const RegisterScreen = () => {
                 accept="image/*"
                 onChange={(e) => setPhoto(e.target.files[0])}
               />
-
+              <br />
               <button className="btn mt-3 mb-3" onClick={register}>
                 REGISTER
               </button>

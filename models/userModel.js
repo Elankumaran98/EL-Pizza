@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema(
         message: "Invalid email format",
       },
     },
+    phone: {
+      type: "string",
+      required: true,
+    },
     password: {
       type: "string",
       required: true,

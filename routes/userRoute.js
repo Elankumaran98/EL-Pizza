@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/userModel");
 const multer = require("multer");
-const storage = multer.memoryStorage(); 
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 router.post("/register", upload.single("photo"), async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const photo = req.file; 
+    const { name, email, phone, password } = req.body;
+    const photo = req.file;
 
     if (!photo) {
       return res.status(400).json({ message: "Photo is required" });
@@ -17,8 +17,9 @@ router.post("/register", upload.single("photo"), async (req, res) => {
     const newUser = new User({
       name,
       email,
+      phone,
       password,
-      photo: photo.buffer.toString("base64"), 
+      photo: photo.buffer.toString("base64"),
     });
 
     await newUser.save();
@@ -71,6 +72,25 @@ router.post("/deleteuser", async (req, res) => {
     res.send("User Deleted Successfully");
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong" + error });
+  }
+});
+
+router.put("/update", upload.single("photo"), async (req, res) => {
+  try {
+    // Extract updated user data from request body
+    const updatedUser = {
+      ...req.body, // Other fields
+      photo: req.file ? req.file.buffer.toString("base64") : "",
+      password: req.body.password, // If allowing password updates
+    };
+
+    // Update user in database
+    await User.findOneAndUpdate({ _id: updatedUser._id }, updatedUser, {
+      new: true,
+    });
+    res.send("User updated successfully");
+  } catch (error) {
+    res.status(400).json({ message: "Something went wrong" + error });
   }
 });
 

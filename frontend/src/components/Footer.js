@@ -5,6 +5,7 @@ import {
   faAddressCard,
   faAddressBook,
   faUserShield,
+  faContactBook,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
@@ -32,6 +33,15 @@ const Footer = () => {
           <FontAwesomeIcon style={{ marginRight: "5px" }} icon={faUserShield} />
           Policy
         </Link>
+        
+          <Link className="flink" to="/contact">
+            <FontAwesomeIcon
+              icon={faContactBook}
+              style={{ marginRight: "5px" }}
+            />
+            Contact
+          </Link>
+        
       </p>
     </div>
   );

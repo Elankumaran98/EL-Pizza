@@ -6,6 +6,7 @@ export const registerUser = (user) => async (dispatch) => {
     const formData = new FormData();
     formData.append("name", user.name);
     formData.append("email", user.email);
+    formData.append("phone", user.phone);
     formData.append("password", user.password);
     formData.append("photo", user.photo); // Add the photo to the form data
 
@@ -88,10 +89,11 @@ export const deleteUser = (userid) => async (dispatch) => {
   }
 };
 
-
 export const updateUserDetails = (userDetails) => async (dispatch) => {
   try {
-    const response = await axios.put("/api/users/update", userDetails);
+    const response = await axios.put("/api/users/update", userDetails, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     dispatch({ type: "USER_UPDATE_SUCCESS", payload: response.data });
   } catch (error) {
     dispatch({ type: "USER_UPDATE_FAILED", payload: error });
@@ -99,7 +101,6 @@ export const updateUserDetails = (userDetails) => async (dispatch) => {
 };
 
 
-// ... other actions
 
 export const getUserDetails = () => async (dispatch) => {
   try {
